@@ -1,11 +1,13 @@
 // import React from "react";
 import Button from '@components/Button/Button';
 import '@components/SignInForm/SignInForm.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
 const SignInForm = () => {
     return (
         <section className="sign-in__content">
-            <i className="fa fa-user-circle sign-in__content--icon"></i>
+            <FontAwesomeIcon icon={faUserCircle} className="sign-in__content--icon"/>
             <h1>Sign In</h1>
             <form>
                 <div className="input-wrapper">

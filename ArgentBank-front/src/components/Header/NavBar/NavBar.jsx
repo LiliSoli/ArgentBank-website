@@ -1,7 +1,10 @@
 // import React from "react";
 import { NavLink } from "react-router-dom";
 import '@components/Header/NavBar/NavBar.scss';
-import logo from '@assets/argentBankLogo.png';
+import logo from '@assets/img/argentBankLogo.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+
 
 const NavBar = () => {
     return (
@@ -17,6 +20,7 @@ const NavBar = () => {
             <div>
                 <NavLink className="main-nav__item" to="/SignIn">
                     <i className="fa fa-user-circle"></i>
+                    <FontAwesomeIcon icon={faUserCircle} />
                     Sign In
                 </NavLink>
             </div>
