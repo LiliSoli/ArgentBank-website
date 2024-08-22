@@ -1,10 +1,10 @@
-import EditUserForm from '@components/EditUserForm/EditUserForm';
+import EditUser from '@components/EditUser/EditUser';
 import Accounts from '@components/Accounts/Accounts';
 
 const Home = () => {
     return (
         <main className="bg-dark">
-            <EditUserForm />
+            <EditUser />
             <Accounts />
         </main>
     )

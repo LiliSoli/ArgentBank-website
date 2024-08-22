@@ -1,10 +1,10 @@
 // import React from "react";
 import Button from '@components/Button/Button';
-import '@components/EditUserForm/EditUserForm.scss';
+import '@components/EditUser/EditUser.scss';
 
-const EditUserForm = () => {
+const EditUser = () => {
     return (
-        <div className="user-form">
+        <div className="edit-user">
             <h1>Welcome back<br />Tony Jarvis!</h1>
             
             <Button
@@ -17,4 +17,4 @@ const EditUserForm = () => {
 };
 
 
-export default EditUserForm;
+export default EditUser;
