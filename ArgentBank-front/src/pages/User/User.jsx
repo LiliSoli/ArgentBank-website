@@ -1,11 +1,22 @@
 import EditUser from '@components/EditUser/EditUser';
-import Accounts from '@components/Accounts/Accounts';
+import accountData from '@data/accounts.json';
+import Account from '@components/Account/Account';
 
 const Home = () => {
     return (
         <main className="bg-dark">
             <EditUser />
-            <Accounts />
+
+            <h2 className="sr-only">Accounts</h2>
+
+            {accountData.map((account, index) => (
+                <Account
+                    key={index}
+                    title={account.title}
+                    amount={account.amount}
+                    description={account.description}
+                />
+            ))}
         </main>
     )
 }

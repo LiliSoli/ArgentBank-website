@@ -1,7 +1,7 @@
 // import React from "react";
 import PropTypes from 'prop-types';
 import Button from '@components/Button/Button'
-import '@components/Accounts/Account/Account.scss';
+import '@components/Account/Account.scss';
 
 const Account = ({ title, amount, description }) => {
     return (

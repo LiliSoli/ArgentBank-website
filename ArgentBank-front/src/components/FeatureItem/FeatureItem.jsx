@@ -1,6 +1,6 @@
 // import React from "react";
 import PropTypes from 'prop-types';
-import '@components/Features/FeatureItem/FeatureItem.scss';
+import '@components/FeatureItem/FeatureItem.scss';
 
 const FeatureItem = ({ icon, altText, title, description }) => {
     return (
