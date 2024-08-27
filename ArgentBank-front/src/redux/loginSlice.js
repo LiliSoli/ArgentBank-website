@@ -5,20 +5,21 @@ export const fetchToken = createAsyncThunk(
   'login/fetchToken',
   async (credentials, thunkAPI) => {
     try {
-      const response = await fetch('https://example.com/api/login', {
+      const response = await fetch('http://localhost:3001/api/v1/user/login', {
         method: 'POST',
         headers: {
+          'Accept': 'application/json',
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(credentials),
       });
       const data = await response.json();
-
+console.log(data)
       if (!response.ok) {
         return thunkAPI.rejectWithValue(data);
       }
 
-      return data.token;  // Supposons que l'API renvoie le token dans `data.token`
+      return data.body.token;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -37,7 +38,12 @@ const loginSlice = createSlice({
   name: 'login',
   initialState,
   reducers: {
-    // Tu peux ajouter des reducers ici pour des actions synchrones si nécessaire
+    logout: (state) => {
+      state.token = null;
+      state.loading = false;
+      state.error = null;
+      localStorage.removeItem('token');
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -56,4 +62,5 @@ const loginSlice = createSlice({
   },
 });
 
+export const { logout } = loginSlice.actions;
 export default loginSlice.reducer;

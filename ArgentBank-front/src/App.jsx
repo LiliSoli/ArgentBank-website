@@ -3,7 +3,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from '@redux/store';
-import NavBar from '@components/Header/Header';
+import NavBar from '@components/NavBar/NavBar';
 import Footer from '@components/Footer/Footer';
 import Home from '@pages/Home/Home';
 import SignIn from '@pages/SignIn/SignIn';
