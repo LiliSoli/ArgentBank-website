@@ -21,7 +21,36 @@ export const fetchUserProfile = createAsyncThunk(
         return rejectWithValue(data);
       }
 
-      return data.body;  // Supposons que le profil est dans `data.body`
+      console.log(data)
+      return data.body;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+// Action asynchrone pour modifier le profil utilisateur
+export const editUserProfile = createAsyncThunk(
+  'profile/editUserProfile',
+  async ({ userName, firstName, lastName }, { getState, rejectWithValue }) => {
+    const token = getState().login.token;
+    try {
+      const response = await fetch('http://localhost:3001/api/v1/user/profile', {
+        method: 'PUT',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`, // On passe le token pour l'authentification
+        },
+        body: JSON.stringify({ userName, firstName, lastName }),
+      });
+      const data = await response.json();
+
+      if (!response.ok) {
+        return rejectWithValue(data);
+      }
+
+      return data.body;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -30,6 +59,8 @@ export const fetchUserProfile = createAsyncThunk(
 
 const initialState = {
   userName: '',
+  firstName: '',
+  lastName: '',
   loading: false,
   error: null,
 };
@@ -40,21 +71,42 @@ const profileSlice = createSlice({
   reducers: {
     clearProfile: (state) => {
       state.userName = '';
+      state.firstName = '';
+      state.lastName = '';
       state.loading = false;
       state.error = null;
     },
   },
   extraReducers: (builder) => {
     builder
+      // Fetch User Profile
       .addCase(fetchUserProfile.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
       .addCase(fetchUserProfile.fulfilled, (state, action) => {
-        state.userName = action.payload.userName; 
+        state.userName = action.payload.userName;
+        state.firstName = action.payload.firstName;
+        state.lastName = action.payload.lastName;
         state.loading = false;
       })
       .addCase(fetchUserProfile.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+
+      // Edit User Profile
+      .addCase(editUserProfile.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(editUserProfile.fulfilled, (state, action) => {
+        state.userName = action.payload.userName;
+        state.firstName = action.payload.firstName;
+        state.lastName = action.payload.lastName;
+        state.loading = false;
+      })
+      .addCase(editUserProfile.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });

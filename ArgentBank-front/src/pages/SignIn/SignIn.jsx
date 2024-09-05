@@ -3,7 +3,7 @@ import SignInForm from '@components/SignInForm/SignInForm';
 
 const SignIn = () => {
     return (
-        <main className='main bg-dark'>
+        <main className="main bg-dark">
             <SignInForm />
         </main>
 

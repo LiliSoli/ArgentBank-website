@@ -14,7 +14,7 @@ export const fetchToken = createAsyncThunk(
         body: JSON.stringify(credentials),
       });
       const data = await response.json();
-console.log(data)
+
       if (!response.ok) {
         return thunkAPI.rejectWithValue(data);
       }
@@ -44,6 +44,12 @@ const loginSlice = createSlice({
       state.error = null;
       localStorage.removeItem('token');
     },
+    setToken: (state, action) => {
+      state.token = action.payload;
+    },
+    clearError: (state) => {
+      state.error = null;  // Réinitialise l'erreur
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -62,5 +68,5 @@ const loginSlice = createSlice({
   },
 });
 
-export const { logout } = loginSlice.actions;
+export const { logout, setToken, clearError } = loginSlice.actions;
 export default loginSlice.reducer;

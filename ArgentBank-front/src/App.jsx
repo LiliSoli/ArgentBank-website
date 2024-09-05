@@ -8,6 +8,7 @@ import Footer from '@components/Footer/Footer';
 import Home from '@pages/Home/Home';
 import SignIn from '@pages/SignIn/SignIn';
 import User from '@pages/User/User';
+import PrivateRoute from '@components/PrivateRoute/PrivateRoute'; 
 import '@assets/style/main.scss';
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/SignIn" element={<SignIn />} />
-          <Route path="/User" element={<User />} />
+          <Route path="/User" element={<PrivateRoute element={<User />} />} />
         </Routes>
         <Footer />
       </Router>

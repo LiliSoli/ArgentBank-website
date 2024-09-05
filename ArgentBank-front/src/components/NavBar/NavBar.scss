@@ -23,12 +23,19 @@
         }
     }
 
-    &__item {
-        text-decoration: none;
-        margin-right: 0.5rem;
+    &__sign {
+        display: flex;
 
-        &:hover {
-            text-decoration: underline;
+        &--item {
+            text-decoration: none;
+            margin-right: 0.5rem;
+            display: flex;
+            gap: 8px;
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
+
 }

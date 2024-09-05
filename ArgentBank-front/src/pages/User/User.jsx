@@ -4,7 +4,7 @@ import Account from '@components/Account/Account';
 
 const Home = () => {
     return (
-        <main className="bg-dark">
+        <main className="main bg-dark">
             <EditUser />
 
             <h2 className="sr-only">Accounts</h2>

@@ -3,12 +3,13 @@ import { useEffect } from 'react';
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
-import { logout } from "@redux/loginSlice";
+import { logout, setToken } from "@redux/loginSlice";
 import { fetchUserProfile, clearProfile } from '@redux/profileSlice';
 import '@components/NavBar/NavBar.scss';
 import logo from '@assets/img/argentBankLogo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 
 const NavBar = () => {
@@ -18,7 +19,14 @@ const NavBar = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (token) {
+        if (!token) {
+            const storedToken = localStorage.getItem('token');
+            console.log(storedToken);
+            if (storedToken) {
+                dispatch(setToken(storedToken));
+            }
+        }
+        else {
             dispatch(fetchUserProfile());
         }
     }, [token, dispatch]);
@@ -39,22 +47,22 @@ const NavBar = () => {
                 />
                 <h1 className="sr-only">Argent Bank</h1>
             </NavLink>
-            <div>
+            <div className="main-nav__sign">
                 {token ? (
                     <>
-                        <NavLink className="main-nav__item" to="/User">
+                        <NavLink className="main-nav__sign--item" to="/User">
                             <FontAwesomeIcon icon={faUserCircle} />
                             {userName}
                         </NavLink>
-                        <NavLink className="main-nav__item" to="/" onClick={handleLogout}>
-                            <FontAwesomeIcon icon={faUserCircle} />
+                        <NavLink className="main-nav__sign--item" to="/" onClick={handleLogout}>
+                            <FontAwesomeIcon icon={faRightFromBracket} />
                             Sign Out
                         </NavLink>
                     </>
                 ) : (
-                    <NavLink className="main-nav__item" to="/SignIn">
+                    <NavLink className="main-nav__sign--item" to="/SignIn">
                         <FontAwesomeIcon icon={faUserCircle} />
-                        Sign In
+                         Sign In
                     </NavLink>
                 )}
             </div>
