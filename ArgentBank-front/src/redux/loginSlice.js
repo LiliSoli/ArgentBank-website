@@ -26,14 +26,12 @@ export const fetchToken = createAsyncThunk(
   }
 );
 
-// Définir l'état initial
 const initialState = {
   token: null,
   loading: false,
   error: null,
 };
 
-// Créer le slice pour gérer l'état du login
 const loginSlice = createSlice({
   name: 'login',
   initialState,
@@ -48,7 +46,7 @@ const loginSlice = createSlice({
       state.token = action.payload;
     },
     clearError: (state) => {
-      state.error = null;  // Réinitialise l'erreur
+      state.error = null; 
     },
   },
   extraReducers: (builder) => {

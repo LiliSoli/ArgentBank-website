@@ -40,7 +40,7 @@ export const editUserProfile = createAsyncThunk(
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`, // On passe le token pour l'authentification
+          'Authorization': `Bearer ${token}`, 
         },
         body: JSON.stringify({ userName, firstName, lastName }),
       });

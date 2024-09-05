@@ -81,7 +81,7 @@ const SignInForm = () => {
                         checked={rememberMe}
                         onChange={(e) => {
                             setRememberMe(e.target.checked);
-                            console.log("Remember Me:", e.target.checked); // Vérification
+                            console.log("Remember Me:", e.target.checked);
                         }}
                     />
                     <label htmlFor="remember-me">

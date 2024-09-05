@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { editUserProfile } from '@redux/profileSlice'; // Assurez-vous que ce chemin est correct
+import { editUserProfile } from '@redux/profileSlice';
 import Button from '@components/Button/Button';
 import '@components/EditUser/EditUser.scss';
 
