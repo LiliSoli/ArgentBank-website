@@ -26,13 +26,13 @@ const EditUser = () => {
     };
 
     return (
-        <div className="edit-user">
+        <div className="edit-form">
             {isEditing ? (
-                <section className="edit-user-form">
+                <section>
                     <h1>Edit user info</h1>
                     <form onSubmit={handleSave}>
-                        <div className="input-wrapper">
-                            <label htmlFor="username">Username</label>
+                        <div className="edit-form__input-wrapper">
+                            <label htmlFor="username">User name</label>
                             <input
                                 type="text"
                                 id="username"
@@ -40,37 +40,39 @@ const EditUser = () => {
                                 onChange={(e) => setNewUserName(e.target.value)}
                             />
                         </div>
-                        <div className="input-wrapper">
+                        <div className="edit-form__input-wrapper">
                             <label htmlFor="firstName">First Name</label>
                             <input
                                 type="text"
                                 id="firstName"
                                 value={firstName}
-                                readOnly
+                                disabled
                             />
                         </div>
-                        <div className="input-wrapper">
+                        <div className="edit-form__input-wrapper">
                             <label htmlFor="lastName">Last Name</label>
                             <input
                                 type="text"
                                 id="lastName"
                                 value={lastName}
-                                readOnly
+                                disabled
                             />
                         </div>
 
+                        <div className='edit-form__buttons'>
                         <Button
-                            className={"sign-in__button"}
+                            className={"edit-form__button edit-button"}
                             btnTxt={"Save"}
                             type="submit"
                         />
 
                         <Button
-                            className={"sign-in__button"}
+                            className={"edit-form__button edit-button"}
                             btnTxt={"Cancel"}
                             onClick={handleCancel}
                             type="button"
                         />
+                        </div>
                     </form>
                 </section>
             ) : (
