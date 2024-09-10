@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { logout, setToken } from "@redux/loginSlice";
 import { fetchUserProfile, clearProfile } from '@redux/profileSlice';
 import '@components/NavBar/NavBar.scss';
-import logo from '@assets/img/argentBankLogo.png';
+import logo from '@assets/img/argentBankLogo.webp';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
