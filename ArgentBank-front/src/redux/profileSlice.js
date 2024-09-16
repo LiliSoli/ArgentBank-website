@@ -21,7 +21,6 @@ export const fetchUserProfile = createAsyncThunk(
         return rejectWithValue(data);
       }
 
-      console.log(data)
       return data.body;
     } catch (error) {
       return rejectWithValue(error.message);

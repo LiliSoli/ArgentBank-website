@@ -21,7 +21,6 @@ const NavBar = () => {
     useEffect(() => {
         if (!token) {
             const storedToken = localStorage.getItem('token');
-            console.log(storedToken);
             if (storedToken) {
                 dispatch(setToken(storedToken));
             }
